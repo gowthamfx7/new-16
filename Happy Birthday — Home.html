@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday 🎂</title>
+<style>
+  :root{
+    --pink:#ff6fa5; --pink-deep:#e0457f; --gold:#ffd166; --bg1:#2b0f2e; --bg2:#4a1942;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;margin:0;}
+  body{
+    font-family: Georgia, 'Segoe UI', serif;
+    background: radial-gradient(ellipse at top, var(--bg2), var(--bg1) 70%);
+    color:#fff; min-height:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding: 30px 20px;
+    padding-top: calc(30px + env(safe-area-inset-top,0px));
+    padding-bottom: calc(30px + env(safe-area-inset-bottom,0px));
+    position:relative; overflow:hidden;
+  }
+  #hearts{position:fixed; inset:0; pointer-events:none; z-index:0;}
+  .heart{position:absolute; bottom:-10%; font-size:20px; opacity:0.85; animation: rise linear infinite;}
+  @keyframes rise{ 0%{transform:translateY(0) rotate(0deg); opacity:.9;} 100%{transform:translateY(-110vh) rotate(360deg); opacity:0;} }
+  .content{position:relative; z-index:1; max-width:480px;}
+  .cake{font-size:4.5rem; animation: bounce 1.6s ease-in-out infinite;}
+  @keyframes bounce{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+  h1{
+    font-size: clamp(2.2rem, 9vw, 3.6rem);
+    margin: 14px 0 6px; line-height:1.15;
+    background: linear-gradient(90deg, var(--gold), var(--pink), #fff, var(--pink));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    background-size:300% auto; animation: shine 5s linear infinite;
+  }
+  @keyframes shine{ to{ background-position:300% center; } }
+  p{font-size:1.15rem; opacity:.92; margin: 10px 0 34px;}
+  a.enter{
+    display:inline-block; text-decoration:none;
+    background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+    color:#fff; border-radius:999px; padding:16px 34px;
+    font-size:1.05rem; font-weight:bold;
+    box-shadow: 0 10px 28px rgba(224,69,127,.45);
+    transition: transform .15s ease;
+  }
+  a.enter:active{ transform: scale(.96); }
+  footer{opacity:.5; font-size:.8rem; margin-top:40px;}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<div class="content">
+  <div class="cake">🎂🎉</div>
+  <h1>Happy Birthday, My Love</h1>
+  <p>A little something I made just for you...</p>
+  <a class="enter" href="https://claude.ai/artifact/P5Lo58xPRxvQMctQKPA954">💌 Open your gift</a>
+  <footer>made with love, just for you</footer>
+</div>
+<script>
+const wrap = document.getElementById('hearts');
+const emojis = ['💖','💕','💗','✨','🎈'];
+for(let i=0;i<20;i++){
+  const h = document.createElement('div');
+  h.className='heart';
+  h.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+  h.style.left = Math.random()*100+'%';
+  h.style.fontSize = (14+Math.random()*22)+'px';
+  h.style.animationDuration = (6+Math.random()*8)+'s';
+  h.style.animationDelay = (Math.random()*8)+'s';
+  wrap.appendChild(h);
+}
+</script>
+</body>
+</html>
